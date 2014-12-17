@@ -55,7 +55,7 @@ angular.module('ngS3upload.directives', []).
               var filename = selectedFile.name;
               var ext = filename.split('.').pop();
 
-              S3Uploader.getUploadOptions(opts.getOptionsUri || opts.optionsObj).then(function (s3Options) {
+              S3Uploader.getUploadOptions(opts.optionsObj || opts.getOptionsUri).then(function (s3Options) {
                 if (opts.enableValidation) {
                   ngModel.$setValidity('uploading', false);
                 }

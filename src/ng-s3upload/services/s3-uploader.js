@@ -3,7 +3,7 @@ angular.module('ngS3upload.services', []).
     this.uploads = 0;
     var self = this;
 
-    this.getUploadOptions = function (uri) {
+    this.getUploadOptions = function (opts) {
       var deferred = $q.defer();
       // handle options object
       if (typeof opts === 'object' && opts !== null) {
