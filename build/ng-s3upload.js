@@ -36,14 +36,23 @@ angular.module('ngS3upload.config', []).
 
     this.getUploadOptions = function (uri) {
       var deferred = $q.defer();
-      $http.get(uri).
-        success(function (response, status) {
+      // handle options object
+      if (typeof opts === 'object' && opts !== null) {
+        deferred.resolve(opts);
+        return deferred.promise;
+      }
+
+      $http
+        .get(opts)
+        .success(function(response, status) {
           deferred.resolve(response);
-        }).error(function (error, status) {
+        })
+        .error(function(error, status) {
           deferred.reject(error);
         });
 
       return deferred.promise;
+
     };
 
     this.randomString = function (length) {
